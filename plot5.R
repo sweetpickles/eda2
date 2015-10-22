@@ -8,3 +8,6 @@ p5a <- as.data.frame(as.matrix(p5))
 plot(rownames(p5a),p5a$V1)
 model <- lm(p5a$V1 ~ as.numeric(rownames(p5a)))
 abline(model)
+
+p5b <- aggregate(Emissions ~ year, data = ds5, sum)
+with(p5b, qplot(year,Emissions,geom=c('point','smooth'),method='lm'))
